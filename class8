@@ -1,0 +1,25 @@
+
+public class RandomCharacter {
+    public static char getRandomLowerCaseLetter() {
+        return (char) ((int) 'a' + (int) (Math.random() * 26));
+    }
+
+    public static char getRandomUpperCaseLetter() {
+        return (char) ((int) 'A' + (int) (Math.random() * 26));
+    }
+
+    public static char getRandomDigitCharacter() {
+        return (char) ((int) '0' + (int) (Math.random() * 10));
+    }
+
+    public static char getRandomCharacter() {
+        int randomChoice = (int) (Math.random() * 3);
+        if (randomChoice == 0) {
+            return getRandomLowerCaseLetter();
+        } else if (randomChoice == 1) {
+            return getRandomUpperCaseLetter();
+        } else {
+            return getRandomDigitCharacter();
+        }
+    }
+}
