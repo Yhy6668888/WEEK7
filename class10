@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+
+public class class10 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter full year (e.g., 2012): ");
+        int year = scanner.nextInt();
+
+        System.out.print("Enter month as number between 1 and 12: ");
+        int month = scanner.nextInt();
+
+        printMonth(year, month);
+
+        scanner.close();
+    }
+
+    // 先实现一个获取月份天数的辅助方法
+    public static int getMonthDays(int year, int month) {
+        if (month == 2) {
+            if ((year % 4 == 0 && year % 100!= 0) || year % 400 == 0) {
+                return 29;
+            } else {
+                return 28;
+            }
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            return 30;
+        } else {
+            return 31;
+        }
+    }
+
+    // 再实现一个打印月份头部信息（星期几）的方法
+    public static void printMonthHeader() {
+        System.out.println("Sun Mon Tue Wed Thu Fri Sat");
+    }
+
+    // 最后实现打印整个月份日历的方法
+    public static void printMonth(int year, int month) {
+        printMonthHeader();
+        int daysInMonth = getMonthDays(year, month);
+        int dayOfWeek = getDayOfWeek(year, month, 1); // 获取每月1号是星期几的方法需进一步实现
+
+        // 打印每月1号之前的空格
+        for (int i = 0; i < dayOfWeek; i++) {
+            System.out.print("   ");
+        }
+
+        for (int day = 1; day <= daysInMonth; day++) {
+            System.out.printf("%-3d", day);
+            if ((day + dayOfWeek) % 7 == 0 || day == daysInMonth) {
+                System.out.println();
+            }
+        }
+    }
+
+    public static int getDayOfWeek(int year, int month, int day) {
+        if (month < 3) {
+            month += 12;
+            year--;
+        }
+        int century = year / 100;
+        int yearOfCentury = year % 100;
+        int dayOfWeekValue = (day + (26 * (month + 1) / 10) + yearOfCentury + (yearOfCentury / 4) + (century / 4) - (2 * century)) % 7;
+        if (dayOfWeekValue < 0) {
+            dayOfWeekValue += 7;
+        }
+        return dayOfWeekValue;
+    }
+}
