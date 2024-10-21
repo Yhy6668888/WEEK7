@@ -1,22 +1,27 @@
-public class class3 {
+public class class2 {
     public static void main(String[] args) {
-        System.out.println("The grade is"+getGrade(78.5));
-        System.out.println("The grade is"+getGrade(59.5));
-
+        System.out.println("The grade is");
+        printGrade(78.5);
+        System.out.println("The grade is");
+        printGrade(59.5);
     }
-    public static char getGrade(double grade) {
-        if (grade >= 90.0) {
-            return 'A';
+    public static void printGrade(double grade) {
+        if (grade >= 90) {
+            System.out.println("A");
         }
-        else if (grade >= 80.0) {
-            return 'B';
+        else if (grade >= 80) {
+
+            System.out.println("B");
         }
-        else if (grade >= 70.0) {
-            return 'C';
+        else if (grade >= 70) {
+            System.out.println("C");
         }
-        else if (grade >= 60.0) {
-            return 'D';
+        else if (grade >= 60) {
+            System.out.println("D");
         }
-        else return 'F';
+        else if (grade >= 50) {
+            System.out.println("F");
+        }
     }
 }
+
