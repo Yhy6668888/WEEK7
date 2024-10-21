@@ -1,0 +1,15 @@
+public class class13 {
+    public static int sum(int a, int b) {
+        int sum=0;
+        for(int i=1;i<=12;i++){
+            sum+=i;
+            return sum;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("Sum from 1 to10 is: "+sum(1,10));
+        System.out.println("Sum from 20 to 30is: "+sum(20,30));
+        System.out.println("Sum from 35 to45 is: "+sum(35,45));
+        
+    }
+}
